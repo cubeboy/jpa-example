@@ -22,6 +22,7 @@ public class Member {
   private String city;
   private String street;
   private String zipCode;
+  private Integer age;
 
   @ManyToOne
   @JoinColumn(name = "team_id")

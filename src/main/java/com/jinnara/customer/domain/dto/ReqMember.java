@@ -21,10 +21,10 @@ public class ReqMember {
   public Specification<Member> crateSpec() {
     Specification<Member> spec = Specification.where(null);
     if(name != null){
-      spec.and((root, query, builder) -> builder.equal(root.get("name"), name));
+      spec = spec.and((root, query, builder) -> builder.equal(root.get("name"), name));
     }
     if(age != null){
-      spec.and((root, query, builder) -> builder.between(root.get("age"), age.getFirst(), age.getSecond()));
+      spec = spec.and((root, query, builder) -> builder.between(root.get("age"), age.getFirst(), age.getSecond()));
     }
     return spec;
   }

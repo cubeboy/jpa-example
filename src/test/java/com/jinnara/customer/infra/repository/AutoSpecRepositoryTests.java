@@ -34,9 +34,10 @@ public class AutoSpecRepositoryTests {
         Sort.Order.asc("memberId"),
         Sort.Order.desc("name")
     );
-    Pageable pageable = PageRequest.of(1, 5, sort);
+    Pageable pageable = PageRequest.of(0, 5, sort);
 
     Specification<Member> spec = reqParam.crateSpec();
+
     Page<Member> members = repository.findAll(spec, pageable);
 
     assertEquals(1, members.getTotalPages());

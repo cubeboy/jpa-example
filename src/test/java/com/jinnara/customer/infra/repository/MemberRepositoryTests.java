@@ -138,7 +138,6 @@ public class MemberRepositoryTests {
     );
     Pageable pageable = PageRequest.of(1, 5, sort);
 
-
     Specification<Member> spec = Specification.where(null);
     spec = spec.and((root, query, builder) ->
       builder.like(root.get("name"), "user%")
