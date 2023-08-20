@@ -25,9 +25,11 @@ public class AutoSpecRepositoryTests {
 
   @Test
   @Sql("/insertMember.sql")
-  public void makeAutoSpecTest() {
+  public void makeAutoSpecEqualAndTest() {
     ReqMember reqParam = ReqMember.builder()
-        .age(Pair.of(11, 15))
+        //.age(Pair.of(11, 15))
+        .name("user111")
+        .age(11)
         .build();
 
     Sort sort = Sort.by(
@@ -36,16 +38,14 @@ public class AutoSpecRepositoryTests {
     );
     Pageable pageable = PageRequest.of(0, 5, sort);
 
-    Specification<Member> spec = reqParam.crateSpec();
+    Specification<Member> spec = reqParam.toSpec();
 
     Page<Member> members = repository.findAll(spec, pageable);
 
     assertEquals(1, members.getTotalPages());
-    assertEquals(5, members.getTotalElements());
-
-    assertEquals(5, members.getSize());
+    assertEquals(1, members.getTotalElements());
 
     assertEquals("user111", members.getContent().get(0).getName());
-    assertEquals("user115", members.getContent().get(4).getName());
+    assertEquals(11, members.getContent().get(0).getAge());
   }
 }
