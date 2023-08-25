@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "member")
@@ -27,4 +28,14 @@ public class Member {
   @ManyToOne
   @JoinColumn(name = "team_id")
   private Team team;
+
+  @OneToOne
+  @JoinColumn(name = "member_grade", referencedColumnName = "codeId")
+  @Where(clause = "group_id = 'GRADE")
+  private ComCode grade;
+
+  @OneToOne
+  @JoinColumn(name = "member_level", referencedColumnName = "codeId")
+  @Where(clause = "group_id = 'LEVEL")
+  private ComCode level;
 }
