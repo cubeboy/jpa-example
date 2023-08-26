@@ -15,11 +15,11 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ComCode {
   @Id
-  @Column
+  @Column(name="group_id")
   String groupId;
   @Id
-  @Column
+  @Column(name="code_id")
   String codeId;
-  @Column
+  @Column(name="code_name")
   String codeName;
 }
