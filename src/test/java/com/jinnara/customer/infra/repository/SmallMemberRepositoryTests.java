@@ -51,9 +51,9 @@ public class SmallMemberRepositoryTests {
   @Test
   @Sql("/insertMember.sql")
   public void selectOldMember() {
-    SmallMember member = repository.findById(8888L).orElse(null);
+    SmallMember member = repository.findById(118L).orElse(null);
     assertNotNull(member);
-    assertEquals(8888L, member.getMemberId());
-    assertEquals("theOldUser", member.getName());
+    assertEquals(118L, member.getMemberId());
+    assertEquals("user118", member.getName());
   }
 }
